@@ -1,36 +1,32 @@
-# Market Basket Optimization with Apriori Algorithm
+# Market Basket Analysis with Apriori Algorithm
 
 ## Project Overview
-This project implements the Apriori algorithm for market basket optimization using a dataset of product transactions. The goal is to extract association rules from the dataset and analyze patterns in customer purchasing behavior.
+This project implements the Apriori algorithm for market basket analysis using a dataset of product transactions. The goal is to extract association rules from the dataset and identify patterns in customer purchasing behavior. The project also includes exploratory data analysis (EDA) to better understand the dataset before mining.
 
 ## Dataset
-The dataset used for this analysis is the "Market_Basket_Optimisation.csv" which contains transactions made by customers. Each row represents a transaction, with product names as the columns. Some transactions may contain empty (NaN) values where customers did not purchase products.
-
-### Data Structure
-The dataset consists of 7501 transactions, each with up to 20 products. The data is structured with each product purchase in a separate column.
+The dataset used for this analysis is the "Market_Basket_Optimisation.csv" which contains transactions made by customers. Each row represents a transaction, with product names as the columns. The dataset consists of 7501 transactions, each with up to 20 products.
 
 ## Methodology
 
-1. **Data Preparation**: 
-   - The data is read from a CSV file stored in Google Drive.
-   - Missing values are handled by ignoring them during the rule generation process.
+### 1. Exploratory Data Analysis (EDA)
+Before applying the algorithm, we explore the dataset to understand the most frequently purchased products and the distribution of transaction lengths. This helps in choosing appropriate parameters for the Apriori algorithm.
 
-2. **Apriori Algorithm**: 
-   - The Apriori algorithm is used to identify frequent itemsets in the dataset.
-   - The algorithm's parameters:
-     - Minimum support = 0.003
-     - Minimum confidence = 0.2
-     - Minimum lift = 3
-     - Maximum length = 2
-   - These parameters were chosen to focus on finding strong association rules between pairs of products.
+### 2. Data Preprocessing
+The data is read from a CSV file stored in Google Drive. Each row is converted into a clean list of items, with all missing (NaN) values removed before passing the transactions to the algorithm.
 
-3. **Association Rules**: 
-   - Association rules are generated from the frequent itemsets, showing how likely the presence of one product is to be associated with another.
-   - Key metrics for each rule:
-     - **Support**: How frequently the itemset appears in the dataset.
-     - **Confidence**: The probability that the second item is purchased when the first item is purchased.
-     - **Lift**: A measure of how much more likely the two items are to be bought together than separately.
+### 3. Apriori Algorithm
+The Apriori algorithm is used to identify frequent itemsets and generate association rules. The following parameters were used:
+- **Minimum support:** 0.003
+- **Minimum confidence:** 0.2
+- **Minimum lift:** 3
+- **Maximum length:** 2
 
-4. **Results**:
-   - The top rules are presented based on the lift value, which indicates the strength of the association between the two products.
-   
+These parameters were chosen to focus on finding strong association rules between pairs of products.
+
+### 4. Results
+Association rules are generated from the frequent itemsets and sorted by lift value. The key metrics for evaluating each rule are:
+- **Support:** How frequently the itemset appears in the dataset.
+- **Confidence:** The probability that the second item is purchased when the first item is purchased.
+- **Lift:** How much more likely the two items are to be bought together compared to being bought separately.
+
+Using the parameters above, the algorithm identified a total of 9 association rules, with the strongest association found between fromage blanc and honey, achieving a lift of 5.16.
