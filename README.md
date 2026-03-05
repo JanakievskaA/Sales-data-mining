@@ -25,4 +25,4 @@ The Apriori algorithm is used to identify frequent itemsets and generate associa
 The FP-Growth algorithm is applied on the same dataset with the same parameters for a fair comparison. Unlike Apriori, FP-Growth builds a compact FP-tree structure to mine frequent itemsets more efficiently on larger datasets.
 
 ### 5. Results & Comparison
-Both algorithms were evaluated using the same parameters. Apriori identified 9 association rules, while FP-Growth identified 12. All 9 Apriori rules were confirmed by FP-Growth, which additionally discovered 3 rules that Apriori missed: fresh tuna → honey, cottage cheese → brownies, and fresh bread → tomato juice. The strongest association in both cases was found between fromage blanc and honey, with a lift of 5.16.
+Both algorithms were evaluated using the same parameters. Apriori identified 9 association rules, while FP-Growth identified 12. All 9 Apriori rules were confirmed by FP-Growth, which additionally discovered 3 rules that Apriori missed. The strongest association in both cases was found between fromage blanc and honey, with a lift of 5.16.
