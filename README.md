@@ -1,7 +1,7 @@
 # Market Basket Analysis: Apriori vs FP-Growth
 
 ## Project Overview
-This project implements and compares two association rule mining algorithms — Apriori and FP-Growth — using a dataset of customer product transactions. The goal is to extract association rules, identify patterns in customer purchasing behavior, and compare the results of both algorithms.
+This project implements and compares two association rule mining algorithms Apriori and FP-Growth, using a dataset of customer product transactions. The goal is to extract association rules, identify patterns in customer purchasing behavior and compare the results of both algorithms.
 
 ## Dataset
 The dataset used for this analysis is the "Market_Basket_Optimisation.csv" which contains transactions made by customers. Each row represents a transaction, with product names as the columns. The dataset consists of 7501 transactions, each with up to 20 products.
@@ -9,7 +9,7 @@ The dataset used for this analysis is the "Market_Basket_Optimisation.csv" which
 ## Methodology
 
 ### 1. Exploratory Data Analysis (EDA)
-Before applying the algorithms, we explore the dataset to understand the most frequently purchased products and the distribution of transaction lengths. This helps in choosing appropriate parameters for the mining algorithms.
+EDA is conducted to understand the most frequently purchased products and the distribution of transaction lengths, which helps in selecting appropriate parameters for the mining algorithms.
 
 ### 2. Data Preprocessing
 The data is read from a CSV file stored in Google Drive. For Apriori, each row is converted into a clean list of items with all missing values removed. For FP-Growth, the data is additionally transformed into a one-hot encoded format using TransactionEncoder.
