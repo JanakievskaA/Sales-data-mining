@@ -11,17 +11,9 @@ The goal is to:
 - Compare the performance and results of both algorithms
 - Build a simple recommendation system based on discovered patterns
 
----
-
 ## Dataset
 
-The dataset used is **Market_Basket_Optimisation.csv**, which contains real-world-like grocery transactions.
-
-- 7,501 transactions
-- Up to 20 products per transaction
-- Each row represents a customer's basket
-
----
+The dataset used is **Market_Basket_Optimisation.csv**, which contains real-world-like grocery transactions, where each row represents a customer's basket.
 
 ## Methodology
 
@@ -32,20 +24,12 @@ Before applying any algorithm, exploratory analysis was performed to:
 - Analyze transaction length distribution
 - Understand purchasing patterns
 
-This helped in selecting appropriate thresholds for mining.
-
----
-
 ### 2. Data Preprocessing
 
 Two preprocessing approaches were used:
 
 - **Apriori**: Transactions converted into lists of items
 - **FP-Growth**: One-hot encoding using `TransactionEncoder`
-
-Missing values were removed to ensure clean transaction data.
-
----
 
 ### 3. Apriori Algorithm
 
@@ -57,18 +41,12 @@ The Apriori algorithm was applied to generate frequent itemsets and association 
 - Minimum lift: 3  
 - Maximum itemset length: 2  
 
----
-
 ### 4. FP-Growth Algorithm
 
 FP-Growth was applied using the same parameters for fair comparison.
 
 Unlike Apriori, FP-Growth:
-- Builds a compressed FP-tree structure
-- Requires fewer database scans
-- Performs better on larger datasets
-
----
+- Builds a compressed FP-tree structure, requires fewer database scans and performs better on larger datasets
 
 ### 5. Network Visualization
 
@@ -79,8 +57,6 @@ A directed network graph was created to visually represent association rules:
 
 This helps in identifying strong product relationships visually.
 
----
-
 ### 6. Recommendation System
 
 A simple rule-based recommendation system was implemented:
@@ -89,9 +65,7 @@ A simple rule-based recommendation system was implemented:
 - Output: associated products based on strongest rules
 - Includes fallback handling for products with no rules
 
-This simulates a basic e-commerce recommendation engine.
-
----
+This simulates a basic E-commerce recommendation engine.
 
 ## Results & Comparison
 
@@ -109,21 +83,6 @@ Both algorithms were evaluated under identical parameters.
   - **fromage blanc → honey**
   - Lift: **5.16**
 
----
-
-## Key Insights
-
-- Certain product pairs show strong purchasing dependency
-- FP-Growth discovered slightly more associations
-- Association rules can be used for:
-  - Product recommendation systems
-  - Cross-selling strategies
-  - Market basket optimization
-
----
-
 ## Conclusion
 
 This project demonstrates how association rule mining can uncover hidden relationships in transactional data. FP-Growth proved to be slightly more effective in discovering additional rules, while both algorithms produced consistent core insights.
-
-A simple recommendation system was also built to demonstrate real-world application of the extracted rules.
