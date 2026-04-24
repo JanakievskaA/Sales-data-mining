@@ -1,28 +1,129 @@
 # Market Basket Analysis: Apriori vs FP-Growth
 
 ## Project Overview
-This project implements and compares two association rule mining algorithms Apriori and FP-Growth, using a dataset of customer product transactions. The goal is to extract association rules, identify patterns in customer purchasing behavior and compare the results of both algorithms.
+
+This project applies and compares two popular association rule mining algorithms — **Apriori** and **FP-Growth** — on a retail transaction dataset.
+
+The goal is to:
+- Discover frequent item combinations
+- Extract meaningful association rules
+- Analyze customer purchasing behavior
+- Compare the performance and results of both algorithms
+- Build a simple recommendation system based on discovered patterns
+
+---
 
 ## Dataset
-The dataset used for this analysis is the "Market_Basket_Optimisation.csv" which contains transactions made by customers. Each row represents a transaction, with product names as the columns. The dataset consists of 7501 transactions, each with up to 20 products.
+
+The dataset used is **Market_Basket_Optimisation.csv**, which contains real-world-like grocery transactions.
+
+- 7,501 transactions
+- Up to 20 products per transaction
+- Each row represents a customer's basket
+
+---
 
 ## Methodology
 
 ### 1. Exploratory Data Analysis (EDA)
-EDA is conducted to understand the most frequently purchased products and the distribution of transaction lengths, which helps in selecting appropriate parameters for the mining algorithms.
+
+Before applying any algorithm, exploratory analysis was performed to:
+- Identify most frequently purchased items
+- Analyze transaction length distribution
+- Understand purchasing patterns
+
+This helped in selecting appropriate thresholds for mining.
+
+---
 
 ### 2. Data Preprocessing
-The data is read from a CSV file stored in Google Drive. For Apriori, each row is converted into a clean list of items with all missing values removed. For FP-Growth, the data is additionally transformed into a one-hot encoded format using TransactionEncoder.
+
+Two preprocessing approaches were used:
+
+- **Apriori**: Transactions converted into lists of items
+- **FP-Growth**: One-hot encoding using `TransactionEncoder`
+
+Missing values were removed to ensure clean transaction data.
+
+---
 
 ### 3. Apriori Algorithm
-The Apriori algorithm is used to identify frequent itemsets and generate association rules. The following parameters were used:
-- **Minimum support:** 0.003
-- **Minimum confidence:** 0.2
-- **Minimum lift:** 3
-- **Maximum length:** 2
+
+The Apriori algorithm was applied to generate frequent itemsets and association rules.
+
+**Parameters used:**
+- Minimum support: 0.003  
+- Minimum confidence: 0.2  
+- Minimum lift: 3  
+- Maximum itemset length: 2  
+
+---
 
 ### 4. FP-Growth Algorithm
-The FP-Growth algorithm is applied on the same dataset with the same parameters for a fair comparison. Unlike Apriori, FP-Growth builds a compact FP-tree structure to mine frequent itemsets more efficiently on larger datasets.
 
-### 5. Results & Comparison
-Both algorithms were evaluated using the same parameters. Apriori identified 9 association rules, while FP-Growth identified 12. All 9 Apriori rules were confirmed by FP-Growth, which additionally discovered 3 rules that Apriori missed. The strongest association in both cases was found between fromage blanc and honey, with a lift of 5.16.
+FP-Growth was applied using the same parameters for fair comparison.
+
+Unlike Apriori, FP-Growth:
+- Builds a compressed FP-tree structure
+- Requires fewer database scans
+- Performs better on larger datasets
+
+---
+
+### 5. Network Visualization
+
+A directed network graph was created to visually represent association rules:
+- Nodes represent products
+- Edges represent rules
+- Edge thickness and color represent rule strength (lift)
+
+This helps in identifying strong product relationships visually.
+
+---
+
+### 6. Recommendation System
+
+A simple rule-based recommendation system was implemented:
+
+- Input: product name
+- Output: associated products based on strongest rules
+- Includes fallback handling for products with no rules
+
+This simulates a basic e-commerce recommendation engine.
+
+---
+
+## Results & Comparison
+
+Both algorithms were evaluated under identical parameters.
+
+| Algorithm   | Rules Found |
+|-------------|------------|
+| Apriori     | 9 rules    |
+| FP-Growth   | 12 rules   |
+
+### Key Findings:
+- All Apriori rules were also discovered by FP-Growth
+- FP-Growth identified additional associations not captured by Apriori
+- Strongest rule found:
+  - **fromage blanc → honey**
+  - Lift: **5.16**
+
+---
+
+## Key Insights
+
+- Certain product pairs show strong purchasing dependency
+- FP-Growth discovered slightly more associations
+- Association rules can be used for:
+  - Product recommendation systems
+  - Cross-selling strategies
+  - Market basket optimization
+
+---
+
+## Conclusion
+
+This project demonstrates how association rule mining can uncover hidden relationships in transactional data. FP-Growth proved to be slightly more effective in discovering additional rules, while both algorithms produced consistent core insights.
+
+A simple recommendation system was also built to demonstrate real-world application of the extracted rules.
